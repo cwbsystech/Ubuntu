@@ -24,6 +24,7 @@
 #
 # Variável da Hora Inicial do Script, utilizada para calcular o tempo de execução do script
 # opção do comando date: +%T (Time)
+_Casa="Familia"
 HORAINICIAL=$(date +%T)
 #
 # Variáveis para validar o ambiente, verificando se o usuário é "Root" e versão do "Ubuntu"
