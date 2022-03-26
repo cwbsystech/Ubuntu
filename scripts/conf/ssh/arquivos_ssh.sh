@@ -400,7 +400,7 @@ EOF
 
 echo "Configurando o Arquivo NETPLAN"
 sleep 2
-cat <<EOF > $_Netplan
+cat <<EOF > /etc/netplan/00-installer-config.yaml
 # Gerado:       cwb.systech.com.br -- Soluçoes em TI
 # Autor:        Jensy Gregorio Gomez
 # Bio:          Têcnico em Informatica e Eletronica

@@ -302,7 +302,7 @@ echo -e "Atualizando os arquivos de configuração do OpenSSH Server, aguarde...
 	cp -v conf/ubuntu/nanorc /etc/nano/ &>> $LOG
 	#cp -v conf/ssh/sshd_config /etc/ssh/ &>> $LOG
 	#cp -v conf/ssh/shellinabox /etc/default/ &>> $LOG
-	cp -v $_NETPLAN $_NETPLAN.old &>> $LOG
+	#cp -v $_NETPLAN $_NETPLAN.old &>> $LOG
 	#cp -v conf/ubuntu/00-installer-config.yaml $_NETPLAN &>> $LOG
 echo -e "Arquivos atualizados com sucesso!!!, continuando com o script...\n"
 sleep 3
@@ -315,7 +315,7 @@ echo -e "/etc/netplan para saber o nome do arquivo de configuração do Netplan 
 echo -e "o valor da variável _NETPLAN no arquivo de configuração: 00-parametros.sh"
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	nano $_NETPLAN
+	nano /etc/netplan/00-installer-config.yaml
 _Logo_Empresa
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 3
