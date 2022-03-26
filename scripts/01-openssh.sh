@@ -295,12 +295,13 @@ echo -e "Atualizando os arquivos de configuração do OpenSSH Server, aguarde...
 	cp -v conf/ubuntu/config.conf /etc/neofetch/ &>> $LOG
 	cp -v conf/ubuntu/neofetch-cron /etc/cron.d/ &>> $LOG
 	cp -v conf/ubuntu/50-default.conf /etc/rsyslog.d/ &>> $LOG
-	cp -v conf/ubuntu/{hostname,hosts,hosts.allow,hosts.deny,issue.net,nsswitch.conf} /etc/ &>> $LOG
+	Bash conf/ssh/arquivos_ssh.sh
+	cp -v conf/ubuntu/issue.net /etc/ &>> $LOG
 	cp -v conf/ubuntu/nanorc /etc/nano/ &>> $LOG
-	cp -v conf/ssh/sshd_config /etc/ssh/ &>> $LOG
-	cp -v conf/ssh/shellinabox /etc/default/ &>> $LOG
+	#cp -v conf/ssh/sshd_config /etc/ssh/ &>> $LOG
+	#cp -v conf/ssh/shellinabox /etc/default/ &>> $LOG
 	cp -v $_NETPLAN $_NETPLAN.old &>> $LOG
-	cp -v conf/ubuntu/00-installer-config.yaml $_NETPLAN &>> $LOG
+	#cp -v conf/ubuntu/00-installer-config.yaml $_NETPLAN &>> $LOG
 echo -e "Arquivos atualizados com sucesso!!!, continuando com o script...\n"
 sleep 3
 #
