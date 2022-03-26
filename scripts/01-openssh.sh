@@ -74,7 +74,8 @@
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
 
-
+echo "Iniciando..."
+sleep 3
 pacote=$(dpkg --get-selections | grep "figlet" )
 	if [ -n "$pacote" ] ;then
 		echo
