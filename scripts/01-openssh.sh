@@ -83,6 +83,7 @@ pacote=$(dpkg --get-selections | grep "figlet" )
 		apt-get install figlet -qq > /dev/null
 	fi
 
+
 _Logo_Empresa () {
 	clear
 	echo -e " \e[1;31m ======================================================================== \e[m ";
