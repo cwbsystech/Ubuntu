@@ -68,7 +68,7 @@ USER="administrator"
 PASSWORD="pti@2018"
 LEVEL="2008_R2"
 SITE="PTI.INTRA"
-INTERFACE="enp0s3"
+_INTERFACE_LAN="enp0s3"
 GATEWAY="172.16.1.254"
 #
 # Variáveis de configuração do DNS
@@ -274,17 +274,17 @@ echo -e "Instalação do SAMBA4 feito com sucesso!!!, continuando com o script..
 sleep 5
 echo
 #
-echo -e "Atualizando as configurações do NETPLAN, aguarde..."
+echo -e "Atualizando as configurações do _NETPLAN, aguarde..."
 	# opção do comando: &>> (redirecionar a entrada padrão)
 	# opção do comando cp: -v (verbose)
 	cp -v /etc/netplan/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml.old &>> $LOG
-	echo -e "Editando o arquivo de configuração do NETPLAN, pressione <Enter> para continuar..."
+	echo -e "Editando o arquivo de configuração do _NETPLAN, pressione <Enter> para continuar..."
 		read
 		sleep 3
 		vim /etc/netplan/50-cloud-init.yaml
 		netplan --debug apply &>> $LOG
 	echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
-echo -e "Atualização do NETPLAN feita com sucesso!!!, continuando com o script..."
+echo -e "Atualização do _NETPLAN feita com sucesso!!!, continuando com o script..."
 sleep 5
 clear
 #
@@ -304,7 +304,7 @@ echo -e "Promovendo o SAMBA-4 como Controlador de Domínio do Active Directory A
 	
 	#
 	samba-tool domain provision --realm=$REALM --domain=$NETBIOS --server-role=$ROLE --dns-backend=$DNS --use-rfc2307 \
-	--adminpass=$PASSWORD --function-level=$LEVEL --site=$SITE --host-ip=$IP --option="interfaces = lo $INTERFACE" \
+	--adminpass=$PASSWORD --function-level=$LEVEL --site=$SITE --host-ip=$IP --option="interfaces = lo $_INTERFACE_LAN" \
 	--option="bind interfaces only = yes" --option="allow dns updates = nonsecure and secure" \
 	--option="dns forwarder = $GATEWAY" --option="winbind use default domain = yes" --option="winbind enum users = yes" \
 	--option="winbind enum groups = yes" --option="winbind refresh tickets = yes" --option="server signing = auto" \

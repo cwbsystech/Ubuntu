@@ -72,7 +72,7 @@
 #		ssh-add .\vaamonde <Enter>
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
-source 00-parametros.sh
+
 #
 # Configuração da variável de Log utilizado nesse script
 LOG=$LOGSCRIPT
@@ -256,43 +256,43 @@ echo -e "Atualizando os arquivos de configuração do OpenSSH Server, aguarde...
 	cp -v conf/ubuntu/neofetch-cron /etc/cron.d/ &>> $LOG
 	cp -v conf/ubuntu/50-default.conf /etc/rsyslog.d/ &>> $LOG
 	cp -v conf/ubuntu/{hostname,hosts,hosts.allow,hosts.deny,issue.net,nsswitch.conf} /etc/ &>> $LOG
-	cp -v conf/ubuntu/vimrc /etc/vim/ &>> $LOG
+	cp -v conf/ubuntu/nanorc /etc/nano/ &>> $LOG
 	cp -v conf/ssh/sshd_config /etc/ssh/ &>> $LOG
 	cp -v conf/ssh/shellinabox /etc/default/ &>> $LOG
-	cp -v $NETPLAN $NETPLAN.old &>> $LOG
-	cp -v conf/ubuntu/00-installer-config.yaml $NETPLAN &>> $LOG
+	cp -v $_NETPLAN $_NETPLAN.old &>> $LOG
+	cp -v conf/ubuntu/00-installer-config.yaml $_NETPLAN &>> $LOG
 echo -e "Arquivos atualizados com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
-echo -e "Editando o arquivo $NETPLAN, pressione <Enter> para continuar.\n"
+echo -e "Editando o arquivo $_NETPLAN, pressione <Enter> para continuar.\n"
 echo -e "CUIDADO!!!: o nome do arquivo de configuração da placa de rede pode mudar"
 echo -e "dependendo da versão do Ubuntu Server, verifique o conteúdo do diretório:"
 echo -e "/etc/netplan para saber o nome do arquivo de configuração do Netplan e altere"
-echo -e "o valor da variável NETPLAN no arquivo de configuração: 00-parametros.sh"
+echo -e "o valor da variável _NETPLAN no arquivo de configuração: 00-parametros.sh"
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim $NETPLAN
+	nano $_NETPLAN
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
 echo -e "Editando o arquivo de configuração hostname, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim /etc/hostname
+	nano /etc/hostname
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
 echo -e "Editando o arquivo de configuração hosts, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim /etc/hosts
+	nano /etc/hosts
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
 echo -e "Editando o arquivo de configuração nsswitch.conf, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim /etc/nsswitch.conf
+	nano /etc/nsswitch.conf
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
@@ -301,7 +301,7 @@ echo -e "Editando o arquivo de configuração sshd_config, pressione <Enter> par
 	# opção do comando read: -s (Do not echo keystrokes)
 	# opção do comando sshd: -t (text mode check configuration)
 	read -s
-	vim /etc/ssh/sshd_config
+	nano /etc/ssh/sshd_config
 	sshd -t &>> $LOG
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
@@ -309,49 +309,49 @@ sleep 5
 echo -e "Editando o arquivo de configuração hosts.allow, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim /etc/hosts.allow
+	nano /etc/hosts.allow
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
 echo -e "Editando o arquivo de configuração hosts.deny, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim /etc/hosts.deny
+	nano /etc/hosts.deny
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
 echo -e "Editando o arquivo de configuração issue.net, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim /etc/issue.net
+	nano /etc/issue.net
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
 echo -e "Editando o arquivo de configuração shellinabox, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim /etc/default/shellinabox
+	nano /etc/default/shellinabox
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
 echo -e "Editando o arquivo de configuração config.conf, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim /etc/neofetch/config.conf
+	nano /etc/neofetch/config.conf
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
 echo -e "Editando o arquivo de configuração neofetch-cron, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim /etc/cron.d/neofetch-cron
+	nano /etc/cron.d/neofetch-cron
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
 echo -e "Editando o arquivo de configuração 50-default.conf, pressione <Enter> para continuar."
 	# opção do comando read: -s (Do not echo keystrokes)
 	read -s
-	vim /etc/rsyslog.d/50-default.conf
+	nano /etc/rsyslog.d/50-default.conf
 echo -e "Arquivo editado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #

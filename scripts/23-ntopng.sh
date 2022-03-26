@@ -245,7 +245,7 @@ sleep 5
 #
 echo -e "Configurando a Interface de Rede em Modo Promíscuo, aguarde..."
 	# opção do comando: &>> (redirecionar a saída padrão)
-	ifconfig $INTERFACE promisc &>> $LOG
+	ifconfig $_INTERFACE_LAN promisc &>> $LOG
 echo -e "Interface de Rede configurada com sucesso!!!, continuando com o script...\n"
 sleep 5
 #

@@ -1,49 +1,5 @@
 #!/bin/bash
-# Autor: Robson Vaamonde
-# Site: www.procedimentosemti.com.br
-# Facebook: facebook.com/ProcedimentosEmTI
-# Facebook: facebook.com/BoraParaPratica
-# YouTube: youtube.com/BoraParaPratica
-# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
-# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
-# Github: https://github.com/vaamonde
-# Data de criação: 10/10/2021
-# Data de atualização: 08/03/2022
-# Versão: 0.50
-# Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
-#
-# Parâmetros (variáveis de ambiente) utilizados nos scripts de instalação dos Serviços de Rede
-# no Ubuntu Server 20.04.x LTS, antes de modificar esse arquivo, veja os arquivos: BUGS, NEW e
-# CHANGELOG para mais informações.
-#
-#=============================================================================================
-#                    VARIÁVEIS GLOBAIS UTILIZADAS EM TODOS OS SCRIPTS                        #
-#=============================================================================================
-#
-# Declarando as variáveis utilizadas na verificação e validação da versão do Ubuntu Server 
-#
-# Variável da Hora Inicial do Script, utilizada para calcular o tempo de execução do script
-# opção do comando date: +%T (Time)
-_Casa="Familia"
-HORAINICIAL=$(date +%T)
-#
-# Variáveis para validar o ambiente, verificando se o usuário é "Root" e versão do "Ubuntu"
-# opções do comando id: -u (user)
-# opções do comando: lsb_release: -r (release), -s (short), 
-USUARIO=$(id -u)
-UBUNTU=$(lsb_release -rs)
-#
-# Variável do Caminho e Nome do arquivo de Log utilizado em todos os script
-# opção da variável de ambiente $0: Nome do comando/script executado
-# opção do redirecionador | (piper): Conecta a saída padrão com a entrada padrão de outro comando
-# opções do comando cut: -d (delimiter), -f (fields)
-LOGSCRIPT="/var/log/$(echo $0 | cut -d'/' -f2)"
-#
-# Exportando o recurso de Noninteractive do Debconf para não solicitar telas de configuração e
-# nenhuma interação durante a instalação ou atualização do sistema via Apt ou Apt-Get. Ele 
-# aceita a resposta padrão para todas as perguntas.
-export DEBIAN_FRONTEND="noninteractive"
-#
+
 #=============================================================================================
 #              VARIÁVEIS DE REDE DO SERVIDOR UTILIZADAS EM TODOS OS SCRIPTS                  #
 #=============================================================================================
@@ -51,32 +7,32 @@ export DEBIAN_FRONTEND="noninteractive"
 # Declarando as variáveis utilizadas nas configurações de Rede do Servidor Ubuntu 
 #
 # Variável do Usuário padrão utilizado no Servidor Ubuntu desse curso
-USUARIODEFAULT="vaamonde"
+_USUARIO_DEFAULT="vaamonde"
 #
 # Variável da Senha padrão utilizado no Servidor Ubuntu desse curso
-SENHADEFAULT="pti@2018"
+_SENHA_ADMINISTRATOR="pti@2018"
 #
 # Variável do Nome (Hostname) do Servidor Ubuntu desse curso
-NOMESERVER="ptispo01ws01"
+_NOME_SERVIDOR="ptispo01ws01"
 #
 # Variável do Nome de Domínio do Servidor Ubuntu desse curso
 # OBSERVAÇÃO IMPORTANTE: essa variável será utilizada em outras variáveis desse curso
-DOMINIOSERVER="pti.intra"
+_NOME_DOMINIO="pti.intra"
 #
 # Variável do Nome (Hostname) FQDN (Fully Qualified Domain Name) do Servidor Ubuntu desse curso
-FQDNSERVER="$NOMESERVER.$DOMINIOSERVER"
+_NOME_FQDN="$_NOME_SERVIDOR.$_NOME_DOMINIO"
 #
 # Variável do Endereço IPv4 principal (padrão) do Servidor Ubuntu desse curso
-IPV4SERVER="172.16.1.20"
+_IPV4_SERVIDOR="172.16.1.20"
 #
 # Variável do Nome da Interface Lógica do Servidor Ubuntu Server desse curso
-INTERFACE="enp0s3"
+_INTERFACE_LAN="enp0s3"
 #
 # Variável do arquivo de configuração da Placa de Rede do Netplan do Servidor Ubuntu
 # CUIDADO!!! o nome do arquivo de configuração da placa de rede pode mudar dependendo da 
 # versão do Ubuntu Server, verificar o conteúdo do diretório: /etc/netplan para saber o nome 
-# do arquivo de configuração do Netplan e mudar a variável NETPLAN com o nome correspondente.
-NETPLAN="/etc/netplan/00-installer-config.yaml"
+# do arquivo de configuração do Netplan e mudar a variável _NETPLAN com o nome correspondente.
+_NETPLAN="/etc/netplan/00-installer-config.yaml"
 #
 #=============================================================================================
 #                        VARIÁVEIS UTILIZADAS NO SCRIPT: 01-openssh.sh                       #
@@ -173,7 +129,7 @@ PORTDHCP="67"
 # Declarando as variáveis de Pesquisa Direta do Domínio, Reversas e Subrede do Bind DNS Server
 #
 # Variável do nome do Domínio do Servidor DNS (veja a linha: 64 desse arquivo)
-DOMAIN=$DOMINIOSERVER
+DOMAIN=$_NOME_DOMINIO
 #
 # Variável do nome da Pesquisa Reversas do Servidor de DNS
 DOMAINREV="1.16.172.in-addr.arpa"
@@ -316,7 +272,7 @@ PORTTFTP="69"
 USERMYSQL="root"
 #
 # Variáveis da senha e confirmação da senha do usuário Root do Mysql 
-SENHAMYSQL=$SENHADEFAULT
+SENHAMYSQL=$_SENHA_ADMINISTRATOR
 AGAINMYSQL=$SENHAMYSQL
 #
 # Variáveis de configuração e liberação da conexão remota para o usuário Root do MySQL
@@ -420,7 +376,7 @@ GROUPFTP="ftpusers"
 USERFTP="ftpuser"
 #
 # Variável da senha do Usuário de VSFTPd Server
-PASSWORDFTP=$SENHADEFAULT
+PASSWORDFTP=$_SENHA_ADMINISTRATOR
 #
 # Variável da senha utilizada na geração das chaves privadas/públicas de criptografia do OpenSSL 
 PWDSSLFTP="vaamonde"
@@ -551,7 +507,7 @@ FLUSH_WORDPRESS="FLUSH PRIVILEGES;"
 #
 # Variáveis de usuário e senha do FTP para acessar o diretório raiz da instalação do Wordpress
 USERFTPWORDPRESS="wordpress"
-PASSWORDFTPWORDPRESS=$SENHADEFAULT
+PASSWORDFTPWORDPRESS=$_SENHA_ADMINISTRATOR
 #
 # Variável da instalação das dependências do Wordpress
 # opção do caractere: \ (contra barra): utilizado para quebra de linha em comandos grandes
@@ -1383,7 +1339,7 @@ POSTGRESQLINSTALL="postgresql postgresql-contrib postgresql-client"
 KEYPGADMIN4="https://www.pgadmin.org/static/packages_pgadmin_org.pub"
 #
 # Variável do email do usuário de autenticação padrão do PgAdmin4
-EMAILPGADMIN="$USERPOSTGRESQL@$DOMINIOSERVER"
+EMAILPGADMIN="$USERPOSTGRESQL@$_NOME_DOMINIO"
 #
 # Variável da senha do email do usuário de autenticação padrão do PgAdmin4
 EMAILPASSPGADMIN=$PASSWORDPOSTGRESQL
@@ -1435,10 +1391,10 @@ WEBDAVDEP="apache2 apache2-utils openssl"
 REALWEBDAV="webdav"
 #
 # Variável da criação do usuário de acesso ao Webdav
-USERWEBDAV=$USUARIODEFAULT
+USERWEBDAV=$_USUARIO_DEFAULT
 #
 # Variável da criação da senha do usuário de acesso ao Webdav
-PASSWORDWEBDAV=$SENHADEFAULT
+PASSWORDWEBDAV=$_SENHA_ADMINISTRATOR
 #
 #=============================================================================================
 #                       VARIÁVEIS UTILIZADAS NO SCRIPT: 32-nextcloud.sh                      #

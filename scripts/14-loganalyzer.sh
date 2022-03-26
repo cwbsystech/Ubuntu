@@ -347,7 +347,7 @@ sleep 5
 #
 echo -e "Verificando o Virtual Host do LogAnalyzer no Apache2, aguarde..."
 	# opção do comando apachectl: -s (a synonym)
-	apache2ctl -S | grep log.$DOMINIOSERVER
+	apache2ctl -S | grep log.$_NOME_DOMINIO
 echo -e "Virtual Host verificado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #

@@ -288,7 +288,7 @@ sleep 5
 #
 echo -e "Verificando o Virtual Host do GLPI no Apache2, aguarde..."
 	# opção do comando apachectl: -s (a synonym)
-	apache2ctl -S | grep glpi.$DOMINIOSERVER
+	apache2ctl -S | grep glpi.$_NOME_DOMINIO
 echo -e "Virtual Host verificado com sucesso!!!, continuando com o script...\n"
 sleep 5
 #
