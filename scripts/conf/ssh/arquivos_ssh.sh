@@ -31,8 +31,8 @@ cat << EOF > /etc/hosts
 # Configuração do Banco de Dados de DNS Estático IPv4 do Servidor Local
 # IPv4		FQDN                    CNAME	
 127.0.0.1 	localhost.localdomain	localhost
-127.0.1.1 	$_NOME_FQDN	$_NOME_SERVIDOR
-$_IPV4_SERVIDOR	$_NOME_FQDN	$_NOME_SERVIDOR
+127.0.1.1 	$_NOME_SERVIDOR.$_NOME_DOMINIO	$_NOME_SERVIDOR
+$_IPV4_SERVIDOR	$_NOME_SERVIDOR.$_NOME_DOMINIO	$_NOME_SERVIDOR
 #
 # Configuração do Banco de Dados de DNS Estático IPv6 do Servidor Local
 # OBSERVAÇÃO: por padrão nesse curso não será utilizando o suporte ao IPv6
