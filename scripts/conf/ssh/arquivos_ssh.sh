@@ -1,6 +1,6 @@
 #!/bin/bash
 
-_Logo_Empresa
+
 echo "Configurando o Arquivo HOSTNAME"
 sleep 2
 cat <<EOF > /etc/hostname
@@ -15,7 +15,7 @@ $_NOME_SERVIDOR
 
 EOF
 
-_Logo_Empresa
+
 echo "Configurando o Arquivo HOSTS"
 sleep 2
 cat << EOF > /etc/hosts
@@ -44,7 +44,7 @@ ff02::1     ip6-allnodes
 ff02::2     ip6-allrouters
 EOF
 
-_Logo_Empresa
+
 echo "Configurando o Arquivo HOSTS.ALLOW"
 sleep 2
 cat << EOF > /etc/hosts.allow
@@ -101,7 +101,7 @@ $_NOME_FQDN-dir: ALL: spawn /bin/echo "$(date -u) | Serviço Remoto %d | Host Re
 #
 EOF
 
-_Logo_Empresa
+
 echo "Configurando o Arquivo HOSTS.DENY"
 sleep 2
 cat << EOF > /etc/hosts.deny
@@ -128,7 +128,7 @@ ALL: ALL: spawn /bin/echo "$(date -u) | Serviço Remoto %d | Host Remoto %c | Po
 #
 EOF
 
-_Logo_Empresa
+
 echo "Configurando o Arquivo NSSWITCH.CONF"
 sleep 2
 cat << EOF > /etc/nsswitch.conf
@@ -170,7 +170,7 @@ netgroup:        nis
 EOF
 
 
-_Logo_Empresa
+
 echo "Configurando o Arquivo SSHD_CONFIG"
 sleep 2
 cat << EOF > /etc/ssh/sshd_config
@@ -360,7 +360,7 @@ Compression delayed
 UseDNS no
 EOF
 
-_Logo_Empresa
+
 echo "Configurando o Arquivo SHELLINABOX"
 sleep 2
 cat <<EOF > /etc/default/shellinabox
@@ -397,7 +397,7 @@ SHELLINABOX_ARGS="--no-beep --service=/:SSH:$_IPV4_SERVIDOR"
 EOF
 
 	
-_Logo_Empresa
+
 echo "Configurando o Arquivo NETPLAN"
 sleep 2
 cat <<EOF > $_Netplan

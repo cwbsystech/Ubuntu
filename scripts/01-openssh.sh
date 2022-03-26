@@ -297,7 +297,7 @@ echo -e "Atualizando os arquivos de configuração do OpenSSH Server, aguarde...
 	cp -v conf/ubuntu/config.conf /etc/neofetch/ &>> $LOG
 	cp -v conf/ubuntu/neofetch-cron /etc/cron.d/ &>> $LOG
 	cp -v conf/ubuntu/50-default.conf /etc/rsyslog.d/ &>> $LOG
-	Bash conf/ssh/arquivos_ssh.sh
+	bash conf/ssh/arquivos_ssh.sh
 	cp -v conf/ubuntu/issue.net /etc/ &>> $LOG
 	cp -v conf/ubuntu/nanorc /etc/nano/ &>> $LOG
 	#cp -v conf/ssh/sshd_config /etc/ssh/ &>> $LOG
