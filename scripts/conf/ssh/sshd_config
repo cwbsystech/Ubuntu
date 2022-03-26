@@ -1,13 +1,10 @@
-# Autor: Robson Vaamonde
-# Site: www.procedimentosemti.com.br
-# Facebook: facebook.com/ProcedimentosEmTI
-# Facebook: facebook.com/BoraParaPratica
-# YouTube: youtube.com/BoraParaPratica
-# Linkedin: https://www.linkedin.com/in/robson-vaamonde-0b029028/
-# Instagram: https://www.instagram.com/procedimentoem/?hl=pt-br
-# Data de criação: 11/10/2021
-# Data de atualização: 20/01/2022
-# Versão: 0.06
+# Gerado:       cwb.systech.com.br -- Soluçoes em TI
+# Autor:        Jensy Gregorio Gomez
+# Bio:          Têcnico em Informatica e Eletronica
+# WhatsApp:     (41) 99896-2670    /    99799-3164
+# Date:         01/01/2022
+# Versão:       0.01
+#
 # Testado e homologado para a versão do Ubuntu Server 20.04.x LTS x64
 # Testado e homologado para a versão do OpenSSH Server v8.2.x
 #
@@ -17,14 +14,14 @@ Include /etc/ssh/sshd_config.d/*.conf
 # Porta de conexão padrão do Servidor de OpenSSH, por segurança é recomendado mudar 
 # o número da porta. Caso você mude o número da porta, no cliente você precisa usar 
 # o comando: ssh -p porta usuário@ip_do_servidor
-Port 22
+Port $_PORTSSH
 #
 # Versão do protocolo padrão do Servidor de OpenSSH
 Protocol 2
 #
 # Endereço IPv4 do Servidor de OpenSSH que está liberado para permitir conexões remotas 
 # via protocolo SSH
-ListenAddress 172.16.1.20
+ListenAddress $_IPV4_SERVIDOR
 #
 # Métodos de Autenticação do OpenSSH, utilizar chaves públicas e autenticação por senha
 # Por padrão o Servidor de OpenSSH não trabalhar com Chaves Pública para autenticação, 
@@ -79,13 +76,13 @@ PermitRootLogin no
 #
 # Usuários que tem permissão de acesso remoto ao Servidor de OpenSSH, separados por 
 # espaço, deve existir no servidor. Usuários listados no arquivo /etc/passwd
-AllowUsers vaamonde
+AllowUsers $_USUARIO_DEFAULT
 #
 # Grupos que tem permissão de acesso remoto ao Servidor de OpenSSH, cuidado, se você 
 # usar a variável AllowUsers o grupo padrão do usuário precisa está liberado na linha 
 # AllowGroups, separados por espaço, deve existir no servidor. Grupos listados no 
 # arquivo /etc/group
-AllowGroups vaamonde
+AllowGroups $_USUARIO_DEFAULT
 #
 # Usuários que não tem permissão de acesso remoto ao Servidor de OpenSSH, separados 
 # por espaço, deve existir no servidor. Usuários listados no arquivo /etc/passwd

@@ -24,17 +24,20 @@ export _USUARIO_DEFAULT="jensyg"
 
 #VARIAVLES DOS SCRIPTS
 export HORAINICIAL=$(date +%T)
-export USUARIO=$(id -u)
-export UBUNTU=$(lsb_release -rs)
-export LOGSCRIPT="/var/log/$(echo $0 | cut -d'/' -f2)"
+export _USUARIO=$(id -u)
+export _UBUNTU=$(lsb_release -rs)
+export _LOGSCRIPT="/var/log/$(echo $0 | cut -d'/' -f2)"
 export DEBIAN_FRONTEND="noninteractive"
 export _NETPLAN="/etc/netplan/00-installer-config.yaml"
-export SSHDEP="openssh-server openssh-client"
-export SSHINSTALL="net-tools traceroute ipcalc nmap tree pwgen neofetch shellinabox"
-export PORTSSH="22"
-export PORTSHELLINABOX="4200"
-
+export _SSHDEP="openssh-server openssh-client"
+export _SSHINSTALL="net-tools traceroute ipcalc nmap tree pwgen neofetch shellinabox"
+export _PORTSSH="22"
+export _PORTSHELLINABOX="4200"
 
 
 EOF
+echo "PARABENS ! ! !"
+echo "Tudo Pronto para Reiniciar... ENTER"
+read
+sleep 3
 reboot
