@@ -73,7 +73,7 @@
 #		ssh-add .\$_USUARIO_DEFAULT <Enter>
 #
 # Arquivo de configuração dos parâmetros utilizados nesse script
-
+clear
 echo "Iniciando..."
 sleep 3
 pacote=$(dpkg --get-selections | grep "figlet" )
